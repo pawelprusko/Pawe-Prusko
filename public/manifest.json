@@ -1,0 +1,21 @@
+{
+  "name": "Data Alchemist",
+  "short_name": "Data Alchemist",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#2C2C2C",
+  "theme_color": "#2C2C2C",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
