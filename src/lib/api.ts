@@ -41,3 +41,37 @@ export function getLatestArticles(): Article[] {
   // Sort by date descending
   return articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
+
+export interface Scene {
+  id: string;
+  title: string;
+  desc: string;
+  videoUrl: string;
+}
+
+export function getScenes(): Scene[] {
+  // Read local JSON files and videos using Vite's fast glob
+  const files = import.meta.glob('/src/scenes/*/scene.json', { eager: true });
+  const videos = import.meta.glob('/src/scenes/*/video.mp4', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+  
+  const scenes: Scene[] = [];
+
+  for (const path in files) {
+    const file = files[path] as { default: any };
+    const sceneData = file.default;
+    
+    // Extract folder name from path: /src/scenes/folder-name/scene.json
+    const parts = path.split('/');
+    const folderName = parts[parts.length - 2];
+    
+    const videoPath = `/src/scenes/${folderName}/video.mp4`;
+    const videoUrl = videos[videoPath] || '';
+
+    scenes.push({
+      ...sceneData,
+      videoUrl
+    });
+  }
+
+  return scenes.sort((a, b) => a.id.localeCompare(b.id));
+}

@@ -45,7 +45,6 @@ export default function ArticleView() {
         <section className="mb-12 group block">
           <div className="relative aspect-square w-full overflow-hidden bg-text-darker/20 mb-8">
             <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent z-10" />
-            <div className="absolute inset-0 mix-blend-overlay opacity-30 z-10" style={{ backgroundImage: 'radial-gradient(circle, #F3EFE9 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
             <img
               src={currentArticle.heroImageUrl}
               alt={currentArticle.title}

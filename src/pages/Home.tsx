@@ -2,30 +2,9 @@ import { motion } from 'motion/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SceneCard from '../components/SceneCard';
-import { getLatestArticles } from '../lib/api';
+import { getLatestArticles, getScenes } from '../lib/api';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const SCENES = [
-  {
-    id: 'scene-1',
-    videoSrc: 'https://cdn.coverr.co/videos/coverr-pouring-sauce-over-a-steak-2680/1080p.mp4',
-    title: 'Slow Braised Short Rib Ragù',
-    desc: 'Rich, glossy pappardelle coated in braised beef reduction, captured on a sun-baked Mediterranean stone patio with natural gravity drip.'
-  },
-  {
-    id: 'scene-2',
-    videoSrc: 'https://cdn.coverr.co/videos/coverr-baking-a-chocolate-cake-2769/1080p.mp4',
-    title: 'Warm Sticky Date & Caramel Cake',
-    desc: 'A dense, warm date sponge topped with a viscous caramel emulsion pull over dark espresso concrete in dramatic chiaroscuro lighting.'
-  },
-  {
-    id: 'scene-3',
-    videoSrc: 'https://cdn.coverr.co/videos/coverr-cutting-bread-2708/1080p.mp4',
-    title: 'Rustic Artisanal Sourdough Bread',
-    desc: 'Low morning sunlight illuminating the cavernous, glistening moist crumb structure and caramelized crust of torn sourdough over an oak bakery table.'
-  }
-];
 
 const CATEGORIES = [
   { id: 'data-alchemist-journal', number: '01', title: 'Data Alchemist Journal', desc: 'Deep, philosophical essays exploring organizational physics, transforming how we navigate information through unexpected metaphors and Data Experience Design.' },
@@ -37,6 +16,7 @@ const CATEGORIES = [
 
 export default function Home() {
   const articles = getLatestArticles();
+  const scenes = getScenes();
   const heroArticle = articles[0];
   const recentArticles = articles.slice(1, 6); // up to 5 articles
   
@@ -59,10 +39,10 @@ export default function Home() {
         <section className="mb-24">
           <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">02 / Selected Scenes</h2>
           <div className="flex flex-col gap-8">
-            {SCENES.map((scene) => (
+            {scenes.map((scene) => (
               <SceneCard
                 key={scene.id}
-                videoSrc={scene.videoSrc}
+                videoSrc={scene.videoUrl}
                 title={scene.title}
                 desc={scene.desc}
               />
@@ -75,8 +55,6 @@ export default function Home() {
           <Link to={`/article/${heroArticle.categoryId}/${heroArticle.slug}`} className="mb-20 group cursor-pointer block">
             <div className="relative aspect-square w-full overflow-hidden bg-text-darker/20 mb-8">
               <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent z-10" />
-              {/* Artifact Effect overlay */}
-              <div className="absolute inset-0 mix-blend-overlay opacity-30 z-10" style={{ backgroundImage: 'radial-gradient(circle, #F3EFE9 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
               <img
                 src={heroArticle.heroImageUrl}
                 alt={heroArticle.title}
