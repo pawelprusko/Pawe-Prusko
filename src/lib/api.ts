@@ -7,6 +7,7 @@ export interface Article {
   excerpt: string;
   content: string;
   category: string;
+  categoryId: string;
   date: string;
   heroImageUrl: string;
 }
@@ -32,6 +33,7 @@ export function getLatestArticles(): Article[] {
 
     articles.push({
       ...articleData,
+      categoryId: categoryFolder,
       heroImageUrl
     });
   }

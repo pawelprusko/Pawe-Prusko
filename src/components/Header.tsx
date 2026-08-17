@@ -32,7 +32,7 @@ export default function Header({ categoryTitle }: { categoryTitle?: string }) {
             <span>{categoryTitle}</span>
           </div>
           <div className={`col-start-1 row-start-1 font-heading font-bold text-lg tracking-tight text-text-main/90 transition-all duration-500 ${showDynamicTitle ? 'opacity-0 -translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'}`}>
-            Data Alchemist
+            Paweł Prusko
           </div>
         </Link>
       </div>

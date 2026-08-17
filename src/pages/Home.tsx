@@ -1,9 +1,31 @@
 import { motion } from 'motion/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SceneCard from '../components/SceneCard';
 import { getLatestArticles } from '../lib/api';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+const SCENES = [
+  {
+    id: 'scene-1',
+    videoSrc: 'https://cdn.coverr.co/videos/coverr-pouring-sauce-over-a-steak-2680/1080p.mp4',
+    title: 'Slow Braised Short Rib Ragù',
+    desc: 'Rich, glossy pappardelle coated in braised beef reduction, captured on a sun-baked Mediterranean stone patio with natural gravity drip.'
+  },
+  {
+    id: 'scene-2',
+    videoSrc: 'https://cdn.coverr.co/videos/coverr-baking-a-chocolate-cake-2769/1080p.mp4',
+    title: 'Warm Sticky Date & Caramel Cake',
+    desc: 'A dense, warm date sponge topped with a viscous caramel emulsion pull over dark espresso concrete in dramatic chiaroscuro lighting.'
+  },
+  {
+    id: 'scene-3',
+    videoSrc: 'https://cdn.coverr.co/videos/coverr-cutting-bread-2708/1080p.mp4',
+    title: 'Rustic Artisanal Sourdough Bread',
+    desc: 'Low morning sunlight illuminating the cavernous, glistening moist crumb structure and caramelized crust of torn sourdough over an oak bakery table.'
+  }
+];
 
 const CATEGORIES = [
   { id: 'data-alchemist-journal', number: '01', title: 'Data Alchemist Journal', desc: 'Deep, philosophical essays exploring organizational physics, transforming how we navigate information through unexpected metaphors and Data Experience Design.' },
@@ -20,47 +42,31 @@ export default function Home() {
   
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
-  const getMonthYear = () => {
-    const d = new Date();
-    const month = d.toLocaleString('en-US', { month: 'long' });
-    const year = d.getFullYear();
-    return `${month.charAt(0).toUpperCase() + month.slice(1)} ${year}`;
-  };
-
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-primary/30 selection:text-text-main">
       <Header />
 
       <main className="max-w-3xl mx-auto px-6 pt-16 pb-20">
         {/* Section 0: Author */}
-        <section className="mb-12">
-          <h2 className="text-xs font-mono tracking-widest text-text-main mb-4 uppercase">Author</h2>
-          <div className="text-sm text-text-main font-mono leading-relaxed">
-           Paweł Prusko, Data Experience Architect helping data-driven organizations eliminate cognitive noise and build high-resonance, human-centered Data Brands.
+        <section className="mb-20 mt-6">
+          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">01 / Statement</h2>
+          <div className="text-[22px] md:text-[36px] text-text-main font-mono leading-[1.4] md:leading-[1.4]">
+           Taste beyond limits. AI Culinary Art Director crafting high-fashion, editorial food visuals & motion. Eliminating physical studio constraints and overhead to deliver campaign-ready assets in days, not weeks.
           </div>
         </section>
 
-        {/* Section 1: Current Focus Log */}
-        <section className="mb-12">
-          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-4 uppercase">Projects Status</h2>
-          <div className="text-sm text-text-main/80 font-mono leading-relaxed">
-            <span className="font-bold text-secondary">[ {getMonthYear()} ]</span> — Deep discovery and logic mapping for a complex, multi-layered dashboard within the tax and accounting sector. Establishing intuitive cognitive structures before engineering begins.
-          </div>
-        </section>
-
-        {/* Section 2: AI Advocate Tip */}
-        <section className="mb-16 py-4 px-6 border-l-2 border-primary bg-primary/5">
-          <h2 className="text-xs font-mono tracking-widest text-primary mb-4 flex items-center gap-2 uppercase">
-            <span className="text-lg leading-none">&gt;_</span>
-            Dataviz AI Advocate Tip
-          </h2>
-          <p className="text-sm text-text-main font-mono leading-relaxed mb-4">
-            Before designing, call the Storyteller role to define your audience. Even the most stunning dashboard fails if it doesn't answer the "so what?" question.
-          </p>
-          <div className="flex items-center gap-3">
-            <a href="https://gemini.google.com/gem/119JTkxqxzabIlPoU4P1qYMD7C06rzm-h?usp=sharing" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center">
-              <span className="text-sm font-semibold tracking-wide text-primary border-b border-primary/30 pb-0.5 group-hover:border-primary/80 group-hover:text-primary/80 transition-all">Check It</span>
-            </a>
+        {/* Section 2: Selected Scenes */}
+        <section className="mb-24">
+          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">02 / Selected Scenes</h2>
+          <div className="flex flex-col gap-8">
+            {SCENES.map((scene) => (
+              <SceneCard
+                key={scene.id}
+                videoSrc={scene.videoSrc}
+                title={scene.title}
+                desc={scene.desc}
+              />
+            ))}
           </div>
         </section>
 
