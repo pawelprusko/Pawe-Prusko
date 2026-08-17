@@ -31,7 +31,7 @@ export default function Header({ categoryTitle }: { categoryTitle?: string }) {
             <span className="text-2xl font-bold leading-none group-hover:-translate-x-1 transition-transform mt-[-3px]">←</span>
             <span>{categoryTitle}</span>
           </div>
-          <div className={`col-start-1 row-start-1 font-heading font-bold text-lg tracking-tight text-text-main/90 transition-all duration-500 ${showDynamicTitle ? 'opacity-0 -translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'}`}>
+          <div className={`col-start-1 row-start-1 font-heading font-bold text-xl md:text-2xl tracking-tight text-text-main/90 transition-all duration-500 ${showDynamicTitle ? 'opacity-0 -translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'}`}>
             Paweł Prusko
           </div>
         </Link>

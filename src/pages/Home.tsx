@@ -38,7 +38,7 @@ export default function Home() {
         {/* Section 2: Selected Scenes */}
         <section className="mb-24">
           <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">02 / Selected Scenes</h2>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-20 md:gap-28">
             {scenes.map((scene) => (
               <SceneCard
                 key={scene.id}

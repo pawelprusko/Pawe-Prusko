@@ -41,8 +41,8 @@ export default function SceneCard({ videoSrc, title, desc }: SceneCardProps) {
   }, []);
 
   return (
-    <div className="mb-24 group block cursor-pointer">
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-text-darker/20 mb-8 rounded-none">
+    <div className="group block cursor-pointer">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-text-darker/20 mb-4 rounded-none">
         {/* Gradient ukryty na prośbę: 
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent z-10 pointer-events-none" /> 
         */}
@@ -57,10 +57,10 @@ export default function SceneCard({ videoSrc, title, desc }: SceneCardProps) {
         />
       </div>
       
-      <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl text-secondary mb-6 leading-tight group-hover:text-[#886944] transition-colors duration-500">
+      <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl text-secondary mb-3 leading-tight group-hover:text-[#886944] transition-colors duration-500">
         {title}
       </h3>
-      <p className="text-lg text-text-muted leading-relaxed font-sans mb-6">
+      <p className="text-lg text-text-muted leading-relaxed font-sans mb-0">
         {desc}
       </p>
     </div>
