@@ -60,9 +60,12 @@ export default function SceneCard({ videoSrc, title, desc }: SceneCardProps) {
       <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl text-secondary mb-3 leading-tight group-hover:text-[#886944] transition-colors duration-500">
         {title}
       </h3>
-      <p className="text-lg text-text-muted leading-relaxed font-sans mb-0">
+      <p className="text-lg text-text-muted leading-relaxed font-sans mb-3">
         {desc}
       </p>
+      <div className="flex items-center gap-3">
+        <span className="text-sm font-semibold tracking-wide text-text-main border-b border-text-main/30 pb-0.5 group-hover:border-[#886944] group-hover:text-[#886944] transition-all">Explore Scene</span>
+      </div>
     </div>
   );
 }
