@@ -142,9 +142,14 @@ export default function Home() {
         <section id="contact" className="mb-24">
           <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">05 / Direct Access</h2>
           <div className="flex flex-col">
-            <p className="text-lg text-text-main font-sans leading-relaxed max-w-lg mb-4">
-              Available for global commissions, agency pitches, and monthly brand retainers.
-            </p>
+            <div className="flex flex-col gap-4 mb-6">
+              <p className="text-lg text-text-main font-sans leading-relaxed max-w-lg">
+                Available for global commissions, agency pitches, and monthly brand retainers.
+              </p>
+              <p className="text-lg text-text-main font-sans leading-relaxed max-w-lg">
+                Request a tailored sample render for your upcoming launch during your initial inquiry.
+              </p>
+            </div>
             <a href="mailto:hello@pawelprusko.com" className="font-heading text-3xl md:text-5xl lg:text-6xl text-secondary hover:text-[#886944] transition-colors inline-block w-max">
               hello@pawelprusko.com
             </a>
