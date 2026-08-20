@@ -6,7 +6,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import Home from './pages/Home';
-import ArticleView from './pages/ArticleView';
+import SceneView from './pages/SceneView';
 import ScrollToTop from './components/ScrollToTop';
 
 import { Analytics } from '@vercel/analytics/react';
@@ -43,7 +43,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/article/:categoryId/:slug" element={<ArticleView />} />
+        <Route path="/scene/:id" element={<SceneView />} />
       </Routes>
       <Analytics />
     </BrowserRouter>

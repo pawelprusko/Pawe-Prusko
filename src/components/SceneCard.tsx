@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 interface SceneCardProps {
+  id: string;
   videoSrc: string;
   title: string;
   desc: string;
 }
 
-export default function SceneCard({ videoSrc, title, desc }: SceneCardProps) {
+export default function SceneCard({ id, videoSrc, title, desc }: SceneCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function SceneCard({ videoSrc, title, desc }: SceneCardProps) {
   }, []);
 
   return (
-    <div className="group block cursor-pointer">
+    <Link to={`/scene/${id}`} className="group block cursor-pointer">
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-text-darker/20 mb-4 rounded-none">
         {/* Gradient ukryty na prośbę: 
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent z-10 pointer-events-none" /> 
@@ -66,6 +68,6 @@ export default function SceneCard({ videoSrc, title, desc }: SceneCardProps) {
       <div className="flex items-center gap-3">
         <span className="text-sm font-semibold tracking-wide text-text-main border-b border-text-main/30 pb-0.5 group-hover:border-[#886944] group-hover:text-[#886944] transition-all">Explore Scene</span>
       </div>
-    </div>
+    </Link>
   );
 }

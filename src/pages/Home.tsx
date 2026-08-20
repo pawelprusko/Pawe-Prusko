@@ -66,6 +66,7 @@ export default function Home() {
             {scenes.map((scene) => (
               <SceneCard
                 key={scene.id}
+                id={scene.id}
                 videoSrc={scene.videoUrl}
                 title={scene.title}
                 desc={scene.desc}

@@ -47,12 +47,21 @@ export interface Scene {
   title: string;
   desc: string;
   videoUrl: string;
+  businessBrief?: string;
+  images?: {
+    establishing?: string;
+    action?: string;
+    macro?: string;
+  };
 }
 
 export function getScenes(): Scene[] {
   // Read local JSON files and videos using Vite's fast glob
   const files = import.meta.glob('/src/scenes/*/scene.json', { eager: true });
   const videos = import.meta.glob('/src/scenes/*/video.mp4', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+  const establishingImages = import.meta.glob('/src/scenes/*/establishing_shot.jpg', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+  const actionImages = import.meta.glob('/src/scenes/*/action_shot.jpg', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+  const macroImages = import.meta.glob('/src/scenes/*/macro_shot.jpg', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
   
   const scenes: Scene[] = [];
 
@@ -69,7 +78,13 @@ export function getScenes(): Scene[] {
 
     scenes.push({
       ...sceneData,
-      videoUrl
+      id: folderName,
+      videoUrl,
+      images: {
+        establishing: establishingImages[`/src/scenes/${folderName}/establishing_shot.jpg`] || 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop',
+        action: actionImages[`/src/scenes/${folderName}/action_shot.jpg`] || 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=800&auto=format&fit=crop',
+        macro: macroImages[`/src/scenes/${folderName}/macro_shot.jpg`] || 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop',
+      }
     });
   }
 
