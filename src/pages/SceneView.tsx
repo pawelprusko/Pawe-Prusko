@@ -23,7 +23,7 @@ export default function SceneView() {
   }
 
   // Get other scenes
-  const otherScenes = allScenes.filter(s => s.id !== currentScene.id);
+  const otherScenes = allScenes.filter(s => s.id !== currentScene.id && s.id !== 'the-latest-drop');
 
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-primary/30 selection:text-text-main">
