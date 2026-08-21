@@ -43,7 +43,9 @@ const FRAMEWORKS = [
 ];
 
 export default function Home() {
-  const scenes = getScenes();
+  const allScenes = getScenes();
+  const latestDropScene = allScenes.find(s => s.id === 'the-latest-drop');
+  const selectedScenes = allScenes.filter(s => s.id !== 'the-latest-drop');
   const [expandedFramework, setExpandedFramework] = useState<string | null>(null);
 
   return (
@@ -63,7 +65,7 @@ export default function Home() {
         <section className="mb-24">
           <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">02 / Selected Scenes</h2>
           <div className="flex flex-col gap-20 md:gap-28">
-            {scenes.map((scene) => (
+            {selectedScenes.map((scene) => (
               <SceneCard
                 key={scene.id}
                 id={scene.id}
@@ -75,9 +77,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 3: The Engine */}
+        {/* Section 3: The Latest Drop */}
+        {latestDropScene && (
+          <section className="mb-24">
+            <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">03 / The Latest Drop</h2>
+            <div className="flex flex-col gap-20 md:gap-28">
+              <SceneCard
+                id={latestDropScene.id}
+                videoSrc={latestDropScene.videoUrl}
+                title={latestDropScene.title}
+                desc={latestDropScene.desc}
+                externalLink="https://www.instagram.com/pawelprusko?igsh=MTMxMnRtbWJ3emRkcg%3D%3D&utm_source=qr"
+                buttonText="See on Instagram"
+              />
+            </div>
+          </section>
+        )}
+
+        {/* Section 4: The Engine */}
         <section className="mb-24">
-          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">03 / The Engine</h2>
+          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">04 / The Engine</h2>
           <div className="flex flex-col gap-8 md:gap-12">
             {ENGINE_FEATURES.map((feat) => (
               <div key={feat.number} className="flex flex-col md:flex-row items-baseline md:items-start gap-2 md:gap-6">
@@ -97,9 +116,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 4: Frameworks */}
+        {/* Section 5: Frameworks */}
         <section className="mb-24">
-          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">04 / Frameworks</h2>
+          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">05 / Frameworks</h2>
           <p className="text-lg text-text-main font-sans mb-8 leading-relaxed max-w-2xl">
             Bespoke content pipelines tailored to launch schedules and campaign calendars.
           </p>

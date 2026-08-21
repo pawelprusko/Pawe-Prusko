@@ -6,9 +6,11 @@ interface SceneCardProps {
   videoSrc: string;
   title: string;
   desc: string;
+  externalLink?: string;
+  buttonText?: string;
 }
 
-export default function SceneCard({ id, videoSrc, title, desc }: SceneCardProps) {
+export default function SceneCard({ id, videoSrc, title, desc, externalLink, buttonText = "Explore Scene" }: SceneCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -42,8 +44,8 @@ export default function SceneCard({ id, videoSrc, title, desc }: SceneCardProps)
     };
   }, []);
 
-  return (
-    <Link to={`/scene/${id}`} className="group block cursor-pointer">
+  const innerContent = (
+    <>
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-text-darker/20 mb-4 rounded-none">
         {/* Gradient ukryty na prośbę: 
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent z-10 pointer-events-none" /> 
@@ -66,8 +68,22 @@ export default function SceneCard({ id, videoSrc, title, desc }: SceneCardProps)
         {desc}
       </p>
       <div className="flex items-center gap-3">
-        <span className="text-sm font-semibold tracking-wide text-text-main border-b border-text-main/30 pb-0.5 group-hover:border-[#886944] group-hover:text-[#886944] transition-all">Explore Scene</span>
+        <span className="text-sm font-semibold tracking-wide text-text-main border-b border-text-main/30 pb-0.5 group-hover:border-[#886944] group-hover:text-[#886944] transition-all">{buttonText}</span>
       </div>
+    </>
+  );
+
+  if (externalLink) {
+    return (
+      <a href={externalLink} target="_blank" rel="noopener noreferrer" className="group block cursor-pointer">
+        {innerContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={`/scene/${id}`} className="group block cursor-pointer">
+      {innerContent}
     </Link>
   );
 }
