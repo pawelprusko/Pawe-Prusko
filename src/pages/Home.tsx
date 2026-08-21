@@ -44,9 +44,15 @@ const FRAMEWORKS = [
 
 export default function Home() {
   const allScenes = getScenes();
+  const SHOW_LATEST_DROP = false; // Toggle this to true to show the section again
   const latestDropScene = allScenes.find(s => s.id === 'the-latest-drop');
   const selectedScenes = allScenes.filter(s => s.id !== 'the-latest-drop');
   const [expandedFramework, setExpandedFramework] = useState<string | null>(null);
+
+  const getSectionNumber = (baseNum: number) => {
+    const num = SHOW_LATEST_DROP ? baseNum + 1 : baseNum;
+    return `0${num}`;
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-primary/30 selection:text-text-main">
@@ -78,7 +84,7 @@ export default function Home() {
         </section>
 
         {/* Section 3: The Latest Drop */}
-        {latestDropScene && (
+        {(SHOW_LATEST_DROP && latestDropScene) && (
           <section className="mb-24">
             <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">03 / The Latest Drop</h2>
             <div className="flex flex-col gap-20 md:gap-28">
@@ -96,7 +102,7 @@ export default function Home() {
 
         {/* Section 4: The Engine */}
         <section className="mb-24">
-          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">04 / The Engine</h2>
+          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">{getSectionNumber(3)} / The Engine</h2>
           <div className="flex flex-col gap-8 md:gap-12">
             {ENGINE_FEATURES.map((feat) => (
               <div key={feat.number} className="flex flex-col md:flex-row items-baseline md:items-start gap-2 md:gap-6">
@@ -118,7 +124,7 @@ export default function Home() {
 
         {/* Section 5: Frameworks */}
         <section className="mb-24">
-          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">05 / Frameworks</h2>
+          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">{getSectionNumber(4)} / Frameworks</h2>
           <p className="text-lg text-text-main font-sans mb-8 leading-relaxed max-w-2xl">
             Bespoke content pipelines tailored to launch schedules and campaign calendars.
           </p>
@@ -158,9 +164,9 @@ export default function Home() {
           </p>
         </section>
 
-        {/* Section 5: Direct Access */}
+        {/* Section 6: Direct Access */}
         <section id="contact" className="mb-24">
-          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">05 / Direct Access</h2>
+          <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">{getSectionNumber(5)} / Direct Access</h2>
           <div className="flex flex-col">
             <div className="flex flex-col gap-4 mb-6">
               <p className="text-lg text-text-main font-sans leading-relaxed max-w-lg">
