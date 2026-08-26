@@ -15,30 +15,32 @@ const FRAMEWORKS = [
   {
     number: '01',
     title: 'Pitch & Concept Assets',
-    target: 'Advertising agencies and production houses during competitive pitch stages.',
-    output: '5–10 static concept frames + 1–3 micro-loop videos (48–72h turnaround).',
-    application: 'Storyboards, visual decks, and pitch presentations designed to win budgets without costly test shoots.'
+    target: 'Agencies and production houses needing rapid visual validation or pitch-winning assets with a 48–72h turnaround.',
+    output: '1 Complete Scene — 1 seamless video loop + 4 high-res editorial photos (wide, action, post-action, and macro angles).'
   },
   {
     number: '02',
     title: 'Core Retainer',
-    target: 'Premium brands seeking a consistent, elevated presence across digital touchpoints.',
-    output: '3–5 editorial scenes per month (9–15 high-res stills + 3–5 seamless 9:16 video loops).',
-    application: 'A continuous flow of high-end visual assets for Instagram, TikTok, and web storefronts.'
+    target: 'Brands seeking a consistent, high-end presence across digital touchpoints.',
+    output: '2 Complete Scenes per month — Each scene includes 1 video loop + 4 editorial photos (wide, action, post-action, and macro angles designed for carousel posts). Total: 2 seamless videos + 8 high-res photos.'
   },
   {
     number: '03',
-    title: 'Campaign Scale',
-    target: 'Scaling brands executing major product launches and multi-channel advertising campaigns.',
-    output: '6–10 hybrid scenes per month (18–30 static stills + 6–10 videos + B-roll variations for Paid Ads).',
-    application: 'End-to-end visual coverage for the full sales funnel (E-commerce, Meta/TikTok Ads, Lookbooks).'
+    title: 'Growth Retainer',
+    target: 'Brands seeking a consistent, high-end weekly presence across all digital touchpoints.',
+    output: '4 Complete Scenes per month — Each scene includes 1 video loop + 4 editorial photos (wide, action, post-action, and macro angles designed for carousel posts). Total: 4 seamless videos + 16 high-res photos.'
   },
   {
     number: '04',
+    title: 'Campaign Scale',
+    target: 'Scaling brands running active marketing campaigns, seasonal launches, and multi-channel ads.',
+    output: '8 Complete Scenes per month — Each scene includes 1 video loop + 4 editorial photos (wide, action, post-action, and macro angles designed for carousel posts). Total: 8 seamless videos + 32 high-res photos.'
+  },
+  {
+    number: '05',
     title: 'Bespoke Production',
-    target: 'Custom enterprise projects, high-volume production (10+ scenes), and dedicated art direction.',
-    output: 'Tailored scene volumes, custom display formats (e.g., digital billboards), and full exclusive commercial licensing.',
-    application: 'Flagship global launches, corporate rebrandings, and bespoke brand activations.'
+    target: 'Enterprise brands and global agencies requiring high-volume productions (10+ scenes) or custom formats.',
+    output: 'Tailored scene volumes, custom display ratios, and full commercial licensing.'
   }
 ];
 
@@ -126,7 +128,7 @@ export default function Home() {
         <section className="mb-24">
           <h2 className="text-xs font-mono tracking-widest text-text-muted mb-6 uppercase">{getSectionNumber(4)} / Frameworks</h2>
           <p className="text-lg text-text-main font-sans mb-8 leading-relaxed max-w-2xl">
-            Bespoke content pipelines tailored to launch schedules and campaign calendars.
+            Bespoke visual content pipelines built around complete multi-angle scenes for social media calendars, digital campaigns, and high-stakes pitches.
           </p>
           <div className="flex flex-col divide-y divide-text-darker/40 border-y border-text-darker/40 mb-8">
             {FRAMEWORKS.map((fw) => {
@@ -151,7 +153,6 @@ export default function Home() {
                       <div className="flex flex-col gap-4 text-sm font-sans text-text-muted leading-relaxed">
                         <p><strong className="text-text-main font-semibold">Target:</strong> {fw.target}</p>
                         <p><strong className="text-text-main font-semibold">Output:</strong> {fw.output}</p>
-                        <p><strong className="text-text-main font-semibold">Application:</strong> {fw.application}</p>
                       </div>
                     </div>
                   )}
