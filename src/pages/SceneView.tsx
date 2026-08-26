@@ -52,13 +52,14 @@ export default function SceneView() {
 
         {/* Hero Video */}
         <section className="mb-24">
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-text-darker/20 rounded-none">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-none">
             <video
               src={currentScene.videoUrl}
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
@@ -76,7 +77,7 @@ export default function SceneView() {
               { label: 'Macro Shot', src: currentScene.images?.macro },
             ].map((shot, i) => (
               <div key={i} className="flex flex-col gap-3">
-                <div className="relative w-full aspect-[4/5] md:aspect-[4/3] bg-text-darker/10 overflow-hidden">
+                <div className="relative w-full aspect-[4/5] md:aspect-[4/3] overflow-hidden">
                   {shot.src && (
                     <img src={shot.src} alt={shot.label} className="absolute inset-0 w-full h-full object-cover" />
                   )}

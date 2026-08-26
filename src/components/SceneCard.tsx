@@ -46,7 +46,7 @@ export default function SceneCard({ id, videoSrc, title, desc, externalLink, but
 
   const innerContent = (
     <>
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-text-darker/20 mb-4 rounded-none">
+      <div className="relative aspect-[4/5] w-full overflow-hidden mb-4 rounded-none">
         {/* Gradient ukryty na prośbę: 
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent z-10 pointer-events-none" /> 
         */}
@@ -56,7 +56,7 @@ export default function SceneCard({ id, videoSrc, title, desc, externalLink, but
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out"
         />
       </div>
